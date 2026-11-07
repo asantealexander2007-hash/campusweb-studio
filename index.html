@@ -1,0 +1,991 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="CampusWeb Studio builds affordable personal websites and online portfolios for students, graduates and freelancers in Ghana.">
+
+    <title>CampusWeb Studio | Your Skills. Your Story.</title>
+
+    <style>
+        :root {
+            --navy: #101828;
+            --navy-light: #18263c;
+            --green: #10b981;
+            --green-dark: #059669;
+            --white: #ffffff;
+            --muted: #667085;
+            --background: #f8fafc;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+
+        header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 18px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        /* Buttons */
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 21px;
+            border-radius: 8px;
+            background: var(--green);
+            color: #052e24;
+            font-weight: 700;
+            border: 1px solid var(--green);
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #34d399;
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            background: transparent;
+            border-color: #475467;
+            color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--navy-light);
+            color: var(--white);
+        }
+
+        /* Hero */
+
+        .hero {
+            background:
+                radial-gradient(
+                    ellipse at 85% 15%,
+                    #1e4b45 0%,
+                    transparent 35%
+                ),
+                var(--navy);
+            color: var(--white);
+            padding: 100px 0 95px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: #6ee7b7;
+            border: 1px solid #286b55;
+            background: #123b31;
+            border-radius: 50px;
+            padding: 7px 13px;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 23px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            color: #d0d5dd;
+            max-width: 540px;
+            margin-bottom: 28px;
+            font-size: 17px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .hero-note {
+            display: block;
+            margin-top: 22px;
+            color: #98a2b3;
+            font-size: 13px;
+        }
+
+        /* Portfolio preview */
+
+        .preview {
+            padding: 14px;
+            background: #233248;
+            border: 1px solid #34445a;
+            border-radius: 18px;
+            transform: rotate(2deg);
+            box-shadow: 0 24px 70px #00000030;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .preview-window {
+            background: #fff;
+            color: var(--navy);
+            padding: 22px;
+            border-radius: 11px;
+            min-height: 335px;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .window-dots i {
+            display: block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #d0d5dd;
+        }
+
+        .profile {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: #d1fae5;
+            display: grid;
+            place-items: center;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .preview-window h3 {
+            font-size: 24px;
+        }
+
+        .preview-window p {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 6px 0 16px;
+        }
+
+        .sample-label {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            border-radius: 5px;
+            font-size: 11px;
+            padding: 5px 9px;
+            margin-bottom: 18px;
+        }
+
+        .fake-line {
+            height: 9px;
+            background: #eaecf0;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .fake-line.short {
+            width: 65%;
+        }
+
+        .mini-projects {
+            display: flex;
+            gap: 9px;
+            margin-top: 19px;
+        }
+
+        .mini-projects div {
+            height: 60px;
+            flex: 1;
+            border-radius: 7px;
+            background: #e0e7ff;
+        }
+
+        .mini-projects div:nth-child(2) {
+            background: #d1fae5;
+        }
+
+        .mini-projects div:nth-child(3) {
+            background: #fef3c7;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(2deg);
+            }
+
+            50% {
+                transform: translateY(-9px) rotate(1deg);
+            }
+        }
+
+        /* General sections */
+
+        section {
+            padding: 82px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            text-align: center;
+            margin: 0 auto 42px;
+        }
+
+        .section-heading .eyebrow {
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+            color: #047857;
+            margin-bottom: 14px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* Services */
+
+        .services {
+            background: var(--background);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px #1018280d;
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #d1fae5;
+            font-size: 23px;
+            margin-bottom: 19px;
+        }
+
+        .card h3 {
+            margin-bottom: 11px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 20px 0 6px;
+        }
+
+        .price small {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .card .button {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Portfolio */
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .project {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .project-art {
+            min-height: 185px;
+            padding: 23px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .project-art h3 {
+            font-size: 24px;
+        }
+
+        .project-art p {
+            font-size: 13px;
+        }
+
+        .art-one {
+            background: #e0e7ff;
+            color: #312e81;
+        }
+
+        .art-two {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .art-three {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 7px;
+        }
+
+        .demo-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 24px;
+        }
+
+        /* How it works */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .step {
+            padding: 10px;
+        }
+
+        .step-number {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--green);
+            font-weight: 800;
+            margin-bottom: 17px;
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 9px;
+        }
+
+        /* Contact */
+
+        .contact {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            margin-bottom: 16px;
+        }
+
+        .contact p {
+            color: #d0d5dd;
+            max-width: 600px;
+            margin: 0 auto 22px;
+        }
+
+        .contact .button {
+            margin: 8px;
+        }
+
+        .contact-note {
+            font-size: 12px;
+            margin-top: 15px !important;
+            color: #98a2b3 !important;
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 25px 0;
+            background: #0b1220;
+            color: #98a2b3;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 850px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preview {
+                max-width: 430px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .card-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .card-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a class="logo" href="#home">
+                CampusWeb<span>.</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+
+                <div>
+                    <span class="eyebrow">
+                        PERSONAL WEBSITES MADE SIMPLE
+                    </span>
+
+                    <h1>
+                        Your Skills.<br>
+                        Your Story.<br>
+                        <span>Your Website.</span>
+                    </h1>
+
+                    <p>
+                        Stand out from the crowd with a personal website
+                        or online portfolio designed around your goals.
+                        Perfect for students, graduates and freelancers.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button" href="#services">
+                            Explore Packages →
+                        </a>
+
+                        <a class="button button-outline" href="#portfolio">
+                            See Sample Designs
+                        </a>
+                    </div>
+
+                    <span class="hero-note">
+                        Built with care for students and young professionals.
+                    </span>
+                </div>
+
+                <div class="preview" aria-label="Sample portfolio preview">
+                    <div class="preview-window">
+
+                        <div class="window-dots">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                        <span class="sample-label">
+                            SAMPLE PORTFOLIO
+                        </span>
+
+                        <div class="profile">👨‍💻</div>
+
+                        <h3>Alex Morgan</h3>
+
+                        <p>
+                            Computer Science Student · Aspiring Developer
+                        </p>
+
+                        <div class="fake-line"></div>
+                        <div class="fake-line short"></div>
+
+                        <div class="mini-projects">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services" id="services">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">OUR SERVICES</span>
+
+                    <h2>Choose Your Website Package</h2>
+
+                    <p>
+                        Simple packages to help you create your
+                        online presence. Final prices depend on the
+                        agreed features and project requirements.
+                    </p>
+                </div>
+
+                <div class="card-grid">
+
+                    <article class="card">
+                        <div class="icon">🌱</div>
+
+                        <h3>Starter Portfolio</h3>
+
+                        <p>
+                            A simple personal website with an introduction,
+                            skills and contact information.
+                        </p>
+
+                        <div class="price">
+                            GH₵150 <small>/ starting price</small>
+                        </div>
+
+                        <p>Ideal for students starting out.</p>
+
+                        <a class="button order-button"
+                           data-package="Starter Portfolio"
+                           href="#contact">
+                            Choose Starter
+                        </a>
+                    </article>
+
+                    <article class="card">
+                        <div class="icon">🚀</div>
+
+                        <h3>Professional Portfolio</h3>
+
+                        <p>
+                            A detailed portfolio with projects,
+                            achievements, skills and contact details.
+                        </p>
+
+                        <div class="price">
+                            GH₵250 <small>/ starting price</small>
+                        </div>
+
+                        <p>Ideal for graduates and job seekers.</p>
+
+                        <a class="button order-button"
+                           data-package="Professional Portfolio"
+                           href="#contact">
+                            Choose Professional
+                        </a>
+                    </article>
+
+                    <article class="card">
+                        <div class="icon">💼</div>
+
+                        <h3>Small Business Website</h3>
+
+                        <p>
+                            A website to introduce a business,
+                            showcase services and help customers
+                            get in touch.
+                        </p>
+
+                        <div class="price">
+                            GH₵350 <small>/ starting price</small>
+                        </div>
+
+                        <p>Ideal for freelancers and small businesses.</p>
+
+                        <a class="button order-button"
+                           data-package="Small Business Website"
+                           href="#contact">
+                            Choose Business
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="portfolio">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">SAMPLE DESIGNS</span>
+
+                    <h2>Ideas for Your Online Presence</h2>
+
+                    <p>
+                        Explore three example concepts showing
+                        different ways a personal website can look.
+                    </p>
+                </div>
+
+                <div class="portfolio-grid">
+
+                    <article class="project">
+                        <div class="project-art art-one">
+                            <span>01 / DEVELOPER</span>
+                            <h3>Build. Create. Improve.</h3>
+                            <p>A portfolio for a future software developer.</p>
+                        </div>
+
+                        <div class="project-info">
+                            <h3>Developer Portfolio</h3>
+                            <p>
+                                Showcase coding projects, technical skills
+                                and contact information.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-art art-two">
+                            <span>02 / CREATIVE</span>
+                            <h3>Ideas Into Design.</h3>
+                            <p>A home for creative projects and artwork.</p>
+                        </div>
+
+                        <div class="project-info">
+                            <h3>Creative Portfolio</h3>
+                            <p>
+                                Display graphic design, photography
+                                or other creative work.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-art art-three">
+                            <span>03 / PROFESSIONAL</span>
+                            <h3>Ready for What's Next.</h3>
+                            <p>A professional profile for a graduate.</p>
+                        </div>
+
+                        <div class="project-info">
+                            <h3>Graduate Profile</h3>
+                            <p>
+                                Present education, experience,
+                                achievements and career goals.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p class="demo-note">
+                    These are illustrative design concepts, not completed
+                    client projects or testimonials.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" class="services">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">A SIMPLE PROCESS</span>
+
+                    <h2>How It Works</h2>
+
+                    <p>
+                        A clear process helps you understand what
+                        to expect before your website is built.
+                    </p>
+                </div>
+
+                <div class="steps">
+
+                    <article class="step">
+                        <div class="step-number">1</div>
+
+                        <h3>Tell Us Your Goals</h3>
+
+                        <p>
+                            Explain what your website is for and
+                            which features you need.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">2</div>
+
+                        <h3>Agree on the Details</h3>
+
+                        <p>
+                            Confirm the price, content, timeline
+                            and features before work begins.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">3</div>
+
+                        <h3>Build and Review</h3>
+
+                        <p>
+                            Create the website, test it and agree
+                            on the final delivery with the customer.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <div class="container">
+
+                <span class="eyebrow">LET'S WORK TOGETHER</span>
+
+                <h2>Ready to Build Your Website?</h2>
+
+                <p>
+                    Tell us about your project. We'll discuss your goals,
+                    the features you need and an appropriate price.
+                </p>
+
+                <a class="button"
+                   id="whatsapp-button"
+                   href="#contact"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Chat on WhatsApp →
+                </a>
+
+                <p class="contact-note" id="contact-note">
+                    WhatsApp contact needs to be configured by the site owner.
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                &copy; <span id="year"></span> CampusWeb Studio.
+                All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        /*
+         * SETUP:
+         * Replace the example number below with your own WhatsApp
+         * number in international format, without + or spaces.
+         *
+         * Example format for Ghana: 233241234567
+         */
+
+        const WHATSAPP_NUMBER = "233536715150";
+
+        const whatsappButton = document.getElementById("whatsapp-button");
+        const contactNote = document.getElementById("contact-note");
+        const yearElement = document.getElementById("year");
+
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+
+        function createWhatsAppLink(packageName = "") {
+            let message = "Hello CampusWeb Studio! ";
+
+            if (packageName) {
+                message += "I am interested in the " +
+                    packageName + " package. ";
+            } else {
+                message += "I would like to discuss a website project. ";
+            }
+
+            message += "Please contact me to discuss the next steps.";
+            return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        }
+
+        if (whatsappButton) {
+            whatsappButton.href = createWhatsAppLink();
+        }
+
+        if (contactNote) {
+            contactNote.textContent = "Message us on WhatsApp to get started.";
+        }
+    </script>
+</body>
+</html>

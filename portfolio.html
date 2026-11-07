@@ -1,0 +1,529 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="A sample personal portfolio website for a computer science student.">
+
+    <title>Alex Morgan | Developer Portfolio</title>
+
+    <style>
+        :root {
+            --background: #0b1120;
+            --surface: #151f32;
+            --green: #6ee7b7;
+            --white: #f8fafc;
+            --muted: #a5b4c8;
+            --border: #263449;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1050px, 90%);
+            margin: auto;
+        }
+
+        header {
+            padding: 22px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .logo span,
+        .highlight {
+            color: var(--green);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        .hero {
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+            background:
+                radial-gradient(
+                    ellipse at 90% 20%,
+                    #153b38 0%,
+                    transparent 35%
+                );
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid #27614e;
+            background: #12332b;
+            color: var(--green);
+            border-radius: 30px;
+            padding: 6px 13px;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 570px;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--green);
+            color: #052e24;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+            margin: 5px 8px 5px 0;
+        }
+
+        .button:hover {
+            background: #a7f3d0;
+        }
+
+        .button-outline {
+            border: 1px solid #526178;
+            background: transparent;
+            color: var(--white);
+        }
+
+        .button-outline:hover {
+            background: var(--surface);
+        }
+
+        .avatar {
+            width: 240px;
+            height: 240px;
+            max-width: 100%;
+            margin: auto;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #164e43, #1e293b);
+            border: 2px solid #356b5b;
+            font-size: 100px;
+            box-shadow: 0 0 70px #10b98115;
+        }
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .section-intro {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 36px;
+        }
+
+        .about {
+            background: #0e1728;
+        }
+
+        .about-box {
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin: 13px 0 8px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .icon {
+            font-size: 30px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .tag {
+            background: #12332b;
+            color: var(--green);
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .project-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--green);
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--green);
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .contact {
+            background: #0e1728;
+            text-align: center;
+        }
+
+        .contact .section-intro {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 750px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .avatar {
+                width: 180px;
+                height: 180px;
+                font-size: 75px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+        <a class="logo" href="#home">Alex<span>.</span></a>
+
+        <nav aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+
+            <div>
+                <span class="badge">SAMPLE STUDENT PORTFOLIO</span>
+
+                <h1>
+                    Hello, I'm Alex.<br>
+                    <span class="highlight">Future Developer.</span>
+                </h1>
+
+                <p>
+                    I'm a fictional computer science student who enjoys
+                    building useful websites, exploring technology,
+                    and learning how to solve problems with code.
+                </p>
+
+                <a class="button" href="#projects">Explore Projects →</a>
+                <a class="button button-outline" href="#contact">
+                    Get in Touch
+                </a>
+            </div>
+
+            <div class="avatar" aria-label="Illustrated developer avatar">
+                👨‍💻
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+
+            <h2 class="section-title">About Me</h2>
+
+            <p class="section-intro">
+                A sample introduction showing how a student can
+                present their background and goals online.
+            </p>
+
+            <div class="about-box">
+                <p>
+                    I'm learning the foundations of web development,
+                    including HTML, CSS and JavaScript. I enjoy creating
+                    simple, responsive websites and improving them
+                    through practice. My goal is to develop my skills
+                    and build projects that solve real problems.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+
+            <h2 class="section-title">My Skills</h2>
+
+            <p class="section-intro">
+                Example skills that can be listed when the student
+                genuinely has experience with them.
+            </p>
+
+            <div class="grid">
+
+                <article class="card">
+                    <div class="icon">🌐</div>
+                    <h3>HTML</h3>
+                    <p>Structuring web pages with meaningful elements.</p>
+
+                    <div class="tags">
+                        <span class="tag">Web Structure</span>
+                        <span class="tag">Accessibility</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="icon">🎨</div>
+                    <h3>CSS</h3>
+                    <p>Styling websites and adapting layouts to different screens.</p>
+
+                    <div class="tags">
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">Layouts</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>Learning to add useful interactions to websites.</p>
+
+                    <div class="tags">
+                        <span class="tag">Interactivity</span>
+                        <span class="tag">Web Basics</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="projects">
+        <div class="container">
+
+            <h2 class="section-title">Sample Projects</h2>
+
+            <p class="section-intro">
+                These are example project ideas for demonstrating
+                what a student portfolio can contain.
+            </p>
+
+            <div class="grid">
+
+                <article class="card">
+                    <div class="project-number">01</div>
+                    <h3>Personal Website</h3>
+                    <p>
+                        A responsive homepage introducing a person,
+                        their interests, skills and goals.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-number">02</div>
+                    <h3>Student Task Planner</h3>
+                    <p>
+                        A simple concept for organizing school tasks,
+                        deadlines and study activities.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Planning</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-number">03</div>
+                    <h3>Small Business Website</h3>
+                    <p>
+                        A sample landing page explaining a business's
+                        services and providing contact details.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">Mobile Friendly</span>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact">
+
+            <h2 class="section-title">Let's Connect</h2>
+
+            <p class="section-intro">
+                This sample section can display a real student's
+                professional email, portfolio links and social profiles.
+            </p>
+
+            <a class="button" href="mailto:YOUR_EMAIL@example.com">
+                Email Me →
+            </a>
+
+            <p style="color: var(--muted); font-size: 13px; margin-top: 18px;">
+                Demonstration only: replace the example contact details
+                before using this template for a real customer.
+            </p>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>
+            Sample portfolio created with CampusWeb Studio.
+            &copy; <span id="year"></span>
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
+```
